@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+__author__ = 'thomas'
+
+print('''\
+              _    _                                    _
+             | |  | |                                  | |
+ _ __    ___ | |_ | |_ __  __     ___   ___      _   _ | | __
+| '_ \  / _ \| __|| __|\ \/ /    / __| / _ \    | | | || |/ /
+| | | ||  __/| |_ | |_  >  <  _ | (__ | (_) | _ | |_| ||   <
+|_| |_| \___| \__| \__|/_/\_\(_) \___| \___/ (_) \__,_||_|\_\
+
+''' + '\n' '''[+]       Automatic Web IPv4 lists to CSV files v1p27lin      [+]''')
+
+import urllib2, re, os, datetime
+
+directoryPath = os.environ['HOME']
+today = str(datetime.date.today())
+list_var = 'a'
+list_name = 'a'
+lists = ['1. Tor Exit Nodes', '2. Malc0de Blacklist', '3. ZeusTracker Blacklist']
+selection = raw_input('\n' + 'Select list:' + '\n'+ '\n' + '\n'.join(lists) + '\n' + '\n' + 'Enter number: ')
+
+# Menu
+
+if selection in ['1']:
+    list_var = 'https://check.torproject.org/exit-addresses'
+    list_name = str('tor_exit_nodes')
+
+elif selection in ['2']:
+    list_var = 'http://malc0de.com/bl/IP_Blacklist.txt'
+    list_name = str('Malc0de_blacklist')
+
+elif selection in ['3']:
+    list_var = 'https://zeustracker.abuse.ch/blocklist.php?download=ipblocklist'
+    list_name = str('ZeusTracker_blacklist')
+
+else:
+    print('Not a valid selection, please run again.')
+
+
+print('Collected latest ' + list_name + ' data' '\n' 'A CSV file has been generated in your home ~/ dir.')
+
+hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 '
+                     '(KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
+
+# Read from url and hold contents in the tor_exit_raw variable.
+req = urllib2.Request(list_var, headers=hdr)
+response = urllib2.urlopen(req)
+ip_addr_raw = response.read()
+
+# Parse regex results to ipv4_regex variable.
+ipv4_regex = re.findall(r'''\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}''', ip_addr_raw)
+
+# For each IPv4 match, write to csv file.
+csv = open(directoryPath + '/' + list_name + today + ".csv", "w")
+for item in ipv4_regex:
+    csv.write(item + '\n')
