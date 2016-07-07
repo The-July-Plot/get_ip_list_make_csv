@@ -6,7 +6,7 @@ if($file_check -eq 'True')
 
 Write-Host '
   
-    The ROC dog is fetching the IPv4 list 
+    The ROCK dog is fetching the IPv4 list 
  and prepping for direct import into findlogs. 
 
                ▄              ▄
@@ -73,7 +73,7 @@ exit
            ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌▄█▒█
            ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒█▀
            ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▀
-           ▐▒▒▒▒▒▒▒▒▒The▒▒▒TOM▒▒▒Dog▒▒▒▒▒▒▒▒▒▌
+           ▐▒▒▒▒▒▒▒▒The▒▒▒ROCK▒▒▒Dog▒▒▒▒▒▒▒▒▒▌
             ▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
             ▐▒▒▒▒▒▒▒▒▒▒▒▒▒error▒▒▒▒▒▒▒▒▒▒▒▒▒▌
              ▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
@@ -88,7 +88,7 @@ exit
 
       Troubleshooting;
 
-   1. Ensure you are running the script from \Documents\c2
+   1. Ensure you are running the script from \Documents\ipv4
    2. Only copy the ipv4file from the downloaded zip, not the entire .zip
    3. Run the ‘clean_up_ipv4_folder’ catch script from the \Document\ipv4\ folder.
         
