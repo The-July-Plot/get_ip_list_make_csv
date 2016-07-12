@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 __author__ = 'thomas'
 
-print('''\
+print(r'''
               _    _                                    _
              | |  | |                                  | |
  _ __    ___ | |_ | |_ __  __     ___   ___      _   _ | | __
